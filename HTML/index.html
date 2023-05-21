@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../CSS/index.css">
+<link rel="stylesheet" href="../CSS/login.css">
+<link rel="stylesheet" href="../CSS/signup.css">
+<body>
+    <!-- Welcome page -->
+    <div class="welcome-page">
+        <nav class="navbar">
+            <div class="left-section">
+                <div class="logo-section">
+                    <div class="logo-image"></div>
+                    <h1 class="logo">Mercado</h1>
+                </div>
+
+                <a href="" class="tutorial-link">Tutorial</a>
+                <a href="" class="contact-us-link">Contact Us</a>
+            </div>
+
+            <div class="right-section">
+                <div class="login-signup-button">
+                    <a class="login-button" href="">Login</a>
+                    <button class="signup-button">Sign Up</button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="first-slide">
+            <div class="left-welcome-page">
+                <h1>Trading at your <br> Fingertips.</h1>
+                <p>Buy, Sell, Review, <br> Promote your business
+                <br> and make money with us today.</p>
+                <form action="" class="join-us-today">
+                    <input type="email" name="email-signup-welcome-page" placeholder="Enter your email address" required>
+                    <button class="join-us-today-button">Join Us</button>
+                </form>
+            </div>
+            <div class="right-slideshow">
+    
+            </div>
+
+        </section>
+
+    </div>
+    <!-- Login -->
+    <div class="Login">
+        <a class="Login-close" href=""><img src="../ICONS/close(1).png" alt=""></a> 
+        <div class="Login-top-text">
+            <h1>Login</h1>
+            <p class="Login-error-msg">Hey, Enter your details to sign in 
+            <br> to your account</p>
+        </div>
+        <div class="Login-form">
+            <form action="" method="get">
+                <input type="email" name="email-login" placeholder="Enter your Email / Phone No" required>
+                <input type="password" name="password-login" placeholder="Enter your Password" required>
+                <button class="Login-button">Login</button>
+            </form>
+            <a href="">Forgot Password ?</a>
+        </div>
+        <p>--- or login with ---</p>
+        <div class="or-sign-in-with">
+            <button class="google"><img src="../ICONS/google-colored.png" alt=""><span>Google</span></button>
+            <button class="apple"><img src="../ICONS/apple-logo.png" alt=""><span>Apple</span></button>
+            <button class="facebook"><img src="../ICONS/facebook-colored.png" alt=""><span>Facebook</span></button>
+        </div>
+        <p class="alternate-signup">Don't have an account ? <a href=""><strong>Signup</strong></a></p>
+    </div>
+    <!-- Signup -->
+    <div class="Signup">
+        <a class="Signup-close" href=""><img src="../ICONS/close(1).png" alt=""></a> 
+        <div class="Signup-top-text">
+            <h1>Signup</h1>
+            <p class="Signup-error-msg">Hey, Enter your personal details 
+            <br> to create your account</p>
+        </div>
+        <div class="Signup-form">
+            <form action="" method="get">
+                <input type="text" name="fullname" placeholder="Enter your fullname" required>
+                <input type="email" name="email-signup" placeholder="Enter your Email" required>
+                <input type="tel" name="" pattern="^\+251\d{9}$" placeholder="Enter your Phone Number" required>
+                <input type="password" name="password-signup" placeholder="Enter your Password" required>
+                <input type="password" name="confirm-password-signup" placeholder="Confirm Password" required>
+                <button class="Signup-button">Signup</button>
+                <br>
+            </form>
+            <!-- <a href="">Having Trouble Signing Up ?</a> -->
+        </div>
+        <p class="alternate-login">Already have an account ? <a href=""><strong>Login</strong></a></p>
+    </div>
+    <script src="../JS/login-signup-container.js"></script>
+    <script src="../JS/welcome-page.js"></script>
+</body>
+</html>

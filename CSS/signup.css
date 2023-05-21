@@ -1,0 +1,109 @@
+*{
+    box-sizing: border-box;
+    /* outline: red dashed 1px; */
+}
+@font-face{
+    font-family: 'Roboto-Mono';
+    src:url('../FONT/Roboto-Mono/static/RobotoMono-Regular.ttf');
+}
+
+.Signup{
+    background-color:  #ebf5fb  ;
+    font-family: 'Roboto-Mono';
+    box-shadow: 2px 2px 80px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    position:absolute;
+    top:50px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    max-height: 100vh;
+    max-width: 30vw;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    display:none;
+}
+
+.Signup p{
+    text-align: center;
+}
+
+.Signup .Signup-close{
+    align-self: end;
+}
+
+.Signup .Signup-close img{
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.Signup .Signup-top-text{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.Signup .Signup-form{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Signup .Signup-form form input{
+    width: 26vw;
+    height: 5vh;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+}
+
+/* .Signup .Signup-form a{
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+
+.Signup .Signup-form a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+    opacity:1
+} */
+
+.Signup .Signup-button{
+    height:4vh;
+    width:20vw;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    background-color: #a9cce3  ;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
+
+.Signup .alternate-login{
+    margin-top: 65px
+}
+
+.Signup .alternate-login a{
+    text-decoration: none;
+    color: black;
+}
+
+.Signup .alternate-login a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+    opacity: 1;
+}
+
+@media(max-width:1600px){
+    .Signup{
+        min-width: 60vw;
+        max-height: 100vh;
+    }
+    .Signup .Signup-form form input{
+        min-width: 50vw;
+    }
+    .Signup .Signup-button{
+        min-width: 50vw;
+    }
+}

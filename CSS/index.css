@@ -1,0 +1,143 @@
+/*set height of first-slide to 75vh when you do tutorial and contact us*/
+/*use iframe for tutorial */
+/* use gradient generator for the rest of the slides */
+*{
+    box-sizing: border-box;
+    /* outline: red dashed 1px; */
+}
+
+@font-face{
+    font-family: 'Roboto-Mono';
+    src:url('../FONT/Roboto-Mono/static/RobotoMono-Regular.ttf');
+}
+
+body{
+    font-family: 'Roboto-Mono';
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+    /* background: rgb(133,193,233);
+    background: linear-gradient(32deg, rgba(133,193,233,1) 10%, rgba(235,245,251,1) 64%);  */
+    background-repeat: no-repeat;
+    width: 100%;
+
+}
+
+.welcome-page .navbar{
+    width: 100%;
+    position: fixed;
+    display: flex;
+    font-size: 20px;
+    background-color: #fff;
+    box-shadow:  0 2px 10px 1px    #a9cce3   ;
+
+}
+
+.welcome-page .navbar a{
+    text-decoration: none;
+    color: black;
+}
+
+.welcome-page .navbar a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+}
+
+.welcome-page .navbar .left-section{
+    width: 55%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.welcome-page .navbar .left-section 
+.tutorial-link, .contact-us-link{
+    align-self: center;
+
+}
+
+.welcome-page .navbar .right-section{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.welcome-page .navbar .right-section 
+.login-signup-button{
+    width:20%;
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.welcome-page .navbar .right-section 
+.login-signup-button .signup-button{
+    min-height: 45px;
+    min-width: 120px;
+    margin-left: 5px;
+    border-radius: 18px;
+    font-size: 20px;
+    color: #fff;
+    background-color: black;
+    border: none;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+.welcome-page .first-slide{
+    height: 150vh; /*set height of first-slide to 75vh when you do tutorial and contact us*/
+    padding-left: 100px;
+    padding-top: 180px;
+    background: rgb(133,193,233);
+    background: radial-gradient(circle, rgba(133,193,233,1) 4%, rgba(235,245,251,1) 64%); 
+
+}
+
+
+.welcome-page .first-slide .left-welcome-page h1{
+    font-size: 75px;
+    margin-top: 10px;
+}
+
+.welcome-page .first-slide .left-welcome-page p{
+    font-size: 30px;
+    font-weight: lighter;
+    margin-bottom: 60px;
+}
+
+.welcome-page .first-slide .left-welcome-page form input{
+    min-width: 22vw;
+    height: 5vh;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+}
+
+.welcome-page .first-slide .left-welcome-page form .join-us-today-button{
+    height: 5vh;
+    width: 100px;
+    border-radius: 8px;
+    font-size: 20px;
+    color: #fff;
+    background-color: black;
+    border: none;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+@media(max-width: 700px){
+    .welcome-page .navbar .left-section{
+        width: 90%;
+    }
+    
+    .welcome-page .navbar .right-section 
+    .login-signup-button .signup-button{
+        display: none;
+    }
+    .welcome-page .navbar .right-section 
+    .login-signup-button .login-button{
+        text-decoration: underline;
+        font-weight: bold;
+    }
+}

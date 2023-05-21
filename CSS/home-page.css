@@ -1,0 +1,438 @@
+*{
+    box-sizing: border-box;
+    /* outline: 1px dotted red; */
+}
+
+@font-face{
+    font-family: 'Roboto-Mono';
+    src:url('../FONT/Roboto-Mono/static/RobotoMono-Regular.ttf');
+}
+
+body{
+    font-family: 'Roboto-Mono';
+    font-size: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav-bar-one{
+    position: fixed;
+    display: flex;
+    z-index: 1;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff;
+}
+
+.nav-bar-one .logo{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.nav-bar-one .logo h3{
+    font-size: 25px;
+}
+
+.nav-bar-one .logo img{
+    height: 30px;
+    width: 30px;
+    margin: 20px;
+    border: none;
+}
+
+.nav-bar-one .search{
+    display: flex;
+    background-color: white;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    height: 45px;
+    width: 650px;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-bar-one .search img{
+    /* clip-path: circle(); */
+    height: 30px;
+    width: 30px;
+    margin: 10px;   
+}
+
+.nav-bar-one .search .search-bar{
+    border: none;
+    font-size: 20px;
+    width: 570px;
+    height:30px;
+}
+
+.nav-bar-one .sell_btn{
+    background-color:   #dc7633 ;
+    color: black;
+    font-size: 15px;
+    font-weight: bolder;
+    width: 70px;
+    height: 40px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.nav-bar-one .account img{
+    clip-path: circle();
+    height: 50px;
+    width: 50px;
+}
+
+.nav-bar-one a{
+    color: black;
+    text-decoration: none;
+}
+
+.nav-bar-one a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+}
+
+.nav-bar-two{
+    position: fixed;
+    top: 100px;
+    z-index: 1;
+    width: 100%;
+    padding-left: 135px;
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    background-color: #d6eaf8;
+    box-shadow:  0 5px 10px 1px   #a9cce3    ;
+    margin-bottom: 1px;
+}
+
+.nav-bar-two a{
+    color: black;
+    text-decoration: none;
+
+}
+
+.nav-bar-two a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+}
+
+.wrapper{
+    /* display: none; */
+    position: absolute;
+    top: 130px;
+    width: 100%;
+    padding-left: 80px;
+}
+
+.wrapper .FYP{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.wrapper .FYP .slide_pics{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 470px;
+    width: 100%;
+    margin-bottom: 25px;
+    /* outline: 2px dashed red */
+}
+
+.wrapper .FYP .slide_pics h3{
+    font-weight: normal;
+}
+
+
+.wrapper .FYP .slide_pics .back_pics{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color:  #a9cce3 ;
+    width: 80%;
+    height: 1000px;
+    padding-left: 20px;
+    gap: 95%;
+}
+
+.wrapper .FYP .slide_pics .back_pics button{
+    height: 70px;
+    background-color: transparent;
+    font-size: 30px;
+    border: none;
+
+}
+
+.wrapper .FYP .best_sellers{
+    height: 400px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper .FYP .best_sellers .titles{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.wrapper .FYP .best_sellers .titles h3{
+    font-weight: normal;
+}
+
+
+.wrapper .FYP .best_sellers .best_sellers_imgs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 5px;
+}
+
+.wrapper .FYP .best_sellers .best_sellers_imgs .best-sellers-slideshow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.wrapper .FYP .best_sellers_imgs button{
+    height: 70px;
+    background-color: transparent;
+    font-size: 30px;
+    border: none; 
+}
+
+.wrapper .FYP .best_sellers_imgs img{
+    clip-path: circle();
+    height:230px;
+    width: 230px;
+    background-color:  #a9cce3;
+}
+
+.wrapper .FYP .best_wears{
+    height: 400px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper .FYP .best_wears .titles{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.wrapper .FYP .best_wears .titles h3{
+    font-weight: normal;
+}
+
+
+.wrapper .FYP .best_wears .best_wears_imgs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.wrapper .FYP .best_wears .best_wears_imgs .best-wears-slideshow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 5px;
+}
+
+.wrapper .FYP .best_wears .best_wears_imgs button{
+    height: 70px;
+    background-color: transparent;
+    font-size: 30px;
+    border: none;
+    outline: none;   
+}
+
+.wrapper .FYP .best_wears .best_wears_imgs img{
+    clip-path: circle();
+    height: 230px;
+    width: 230px;
+    background-color:  #a9cce3;
+}
+
+.wrapper .FYP  .kids_clothes{
+    height: 400px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper .FYP .kids_clothes .titles{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.wrapper .FYP .kids_clothes .titles h3{
+    width: 85%;
+    font-weight: normal;
+}
+
+.wrapper .FYP .kids_clothes .titles a{
+    color: black;
+    text-decoration: none;
+}
+
+.wrapper .FYP .kids_clothes .titles a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+}
+
+.wrapper .FYP .kids_clothes .kids_clothes_imgs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.wrapper .FYP .kids_clothes .kids_clothes_imgs .kids-clothes-slideshow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 5px;
+}
+
+.wrapper .FYP .kids_clothes_imgs button{
+    height: 70px;
+    background-color: transparent;
+    font-size: 30px;
+    border: none;
+    outline: none;   
+}
+
+.wrapper .FYP .kids_clothes_imgs img{
+    clip-path: circle();
+    height: 230px;
+    width: 230px;
+    background-color:  #a9cce3;
+}
+
+.wrapper .FYP .you_may_like{
+    height: 400px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper .FYP .you_may_like .titles{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.wrapper .FYP .you_may_like .titles h3{
+    width: 85%;
+    font-weight: normal;
+}
+
+.you_may_like .titles a{
+    color: black;
+    text-decoration: none;
+}
+
+.you_may_like .titles a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+}
+
+.you_may_like .you_may_like_imgs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 5px;
+    
+}
+
+.you_may_like_imgs button{
+    height: 70px;
+    background-color: transparent;
+    font-size: 30px;
+    border: none;
+    outline: none;   
+}
+.you_may_like_imgs img{
+    clip-path: circle();
+    height: 230px;
+    width: 230px;
+    background-color:  #a9cce3;
+}
+
+footer{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+footer .bottom{
+    padding-top: 80px;
+}
+
+footer .media_link{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-top: 20px;
+}
+
+footer .media_link img{
+    height: 45px;
+    width: 45px;
+    border-radius: 8px;
+}
+
+footer .media_link .feedback{
+    padding-left: 700px;
+    font-size: 20px;
+}
+
+footer .media_link .feedback a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+}
+
+footer a{
+    text-decoration: none;
+    color: black;
+}
+
+footer .about_us{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+}
+footer .about_us a:hover{
+    color:  #2980b9;
+    text-decoration: underline;
+}
+
+
+footer .copyright p{
+    color: grey;
+    font-size: 15px;
+    padding-left:1130px;
+}
+
+
