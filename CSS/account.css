@@ -162,7 +162,7 @@ body{
     display: flex;
     flex-direction: column-reverse;
     padding-bottom: 10px;
-    /* display: none; */
+    display: none;
 }
 
 .wrapper .right-window .chat-room form{
@@ -235,4 +235,54 @@ body{
 
 .outgoing-texts{
     align-self: flex-end;
+}
+
+/* Bought Items */
+.wrapper .content .right-window .bought-items{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none; 
+    display: none;
+}
+
+.single-item{
+    background-color: #aed6f1;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    column-gap: 15px;
+}
+.single-item:hover{
+    background-color:  #d6eaf8;
+}
+
+.single-item img{
+    width: 15%;
+    border-radius: 10px;
+}
+
+/* Items posted for sale */
+
+.wrapper .content .right-window .Items-posted{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none; 
+    display: none;
+}
+
+/* Saved Items */
+.wrapper .content .right-window .Saved-items{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none; 
+    /* display: none; */
 }
