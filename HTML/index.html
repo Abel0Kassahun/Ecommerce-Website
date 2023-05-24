@@ -81,11 +81,11 @@
         </div>
         <div class="Signup-form">
             <form action="" method="get">
-                <input type="text" name="fullname" placeholder="Enter your fullname" required>
-                <input type="email" name="email-signup" placeholder="Enter your Email" required>
-                <input type="tel" name="" pattern="^\+251\d{9}$" placeholder="Enter your Phone Number" required>
-                <input type="password" name="password-signup" placeholder="Enter your Password" required>
-                <input type="password" name="confirm-password-signup" placeholder="Confirm Password" required>
+                <input type="text" name="fullname" placeholder="Enter your fullname" required autocomplete="off" >
+                <input type="email" name="email-signup" placeholder="Enter your Email" required autocomplete="off">
+                <input type="tel" name="" pattern="\(09) \d{8}" placeholder="Enter your Phone Number (09)" required autocomplete="off">
+                <input type="password" name="password-signup" placeholder="Enter your Password" required autocomplete="off" >
+                <input type="password" name="confirm-password-signup" placeholder="Confirm Password" required autocomplete="off">
                 <button class="Signup-button">Signup</button>
                 <br>
             </form>
@@ -93,7 +93,8 @@
         </div>
         <p class="alternate-login">Already have an account ? <a href=""><strong>Login</strong></a></p>
     </div>
-    <script src="../JS/login-signup-container.js"></script>
+    <script src="../JS/login-container.js"></script>
+    <script src="../JS/signup-container.js"></script>
     <script src="../JS/welcome-page.js"></script>
 </body>
 </html>
