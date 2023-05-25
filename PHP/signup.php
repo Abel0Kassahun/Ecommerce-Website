@@ -10,8 +10,29 @@
     $data = json_decode(file_get_contents("php://input"), true);
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    
+        $email = $data['email'];
+        $sql = "select email from user where email = '$email'";
+        $result = $connect -> query($sql);
+        if($result->num_rows == 1){            
+            $response = 'Email already exists, try signing in';
+        }
+        else{
+            
+            $stmt = $connect->prepare("CALL signup(?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $data['email'], $data['fullName'], $data['phoneNo'], $data['psword']);
+            if($stmt->execute()){
+                $response = 'Signup Successful';
+            }
+            else{
+                $response = 'Error Signing up, try again later';
+            }
+            
+            $connect->close();
+        }
+        $toFrontEnd = array(
+            'response' => $response
+        );
 
-
+        echo json_encode($toFrontEnd);
     }
 ?>

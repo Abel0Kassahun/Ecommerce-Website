@@ -40,14 +40,14 @@ signup_form[5].addEventListener('click', (e)=>{
     if(!empty){
         if(!(fullName_pattern.test(signup_form[0].value))){
             on_failure(signup_form[0], error_signup, 
-                'First name and Last name should start <br> with a capital letter, try again')
+                'Incorrect full name format <br> try again (eg. Julius Ceasar)')
         }
         else if(!(email_pattern.test(signup_form[1].value))){
             on_failure(signup_form[1], error_signup, 
                 'Invalid email format, try again')
         }
         else if(!(phoneNo_pattern.test(signup_form[2].value))){
-            on_failure(signup_form[2], error_signup, 'Phone number should start <br> with 09 with 10 digits total')
+            on_failure(signup_form[2], error_signup, 'Phone number should start <br> with 09 and 10 digits in total')
         }
         else if(signup_form[3].value.length <= 6){
             on_failure(signup_form[3], error_signup, 'Password should be longer than 6 characters')        
@@ -57,35 +57,47 @@ signup_form[5].addEventListener('click', (e)=>{
         }
         else{
             signup_request(signup_form).then(returned =>{
-                console.log(returned);
-                if(returned.response === 'Email already exists, try signing in'){
-                    on_failure(signup_form[1], error_signup, returned.response)
-                }
-                else if(returned.response === 'Signup Successful'){
-                    error_signup.innerHTML = `Welcome ${returned.fullName}, you have succesfully signed up, <br> you will be redirected soon`
+                if(returned.response === 'Signup Successful'){
+                    error_signup.innerHTML = `Welcome ${signup_form[0].value}, you have succesfully signed up, <br> you will be redirected soon`
                     error_signup.style.color = '#48c9b0'
                     for(let i = 0; i < 5; i++){
                         signup_form[i].style.border = 'none'
                     }
                     // redirect after 4 seconds
-                    // pass the email to the next page 
+                    // pass the email and the fullname to the next page
+                    setTimeout(() => {
+                        // Code to be executed after 4 seconds
+                        redirect('../HTML/home-page.html', signup_form[1].value, signup_form[0].value)
+                    }, 4000);
+                }
+                else{
+                    on_failure(signup_form[1], error_signup, returned.response)
                 }
             })
         }
     }
 })
 
+function redirect(url, email, fname){
+    /* If you want to navigate to a new URL without replacing 
+    the current page in the browser history,
+    you can use the window.location.replace() method instead.
+    */
+    window.location.href = `${url}?email=${email}&fname=${fname}` 
+}
+
 
 async function signup_request(signup_form){
     let signup_data = {
-        fullName: signup_form[0],
-        email: signup_form[1],
-        phoneNo: signup_form[2],
-        psword: signup_form[3]
+        fullName: signup_form[0].value,
+        email: signup_form[1].value,
+        phoneNo: signup_form[2].value,
+        psword: signup_form[3].value
     }
+    console.log('sent-data-----',signup_data);
     const url = 'http://localhost:8080/Ecommerce-Website/PHP/signup.php'
     try{
-        const resposne = await fetch(url, {
+        const response = await fetch(url, {
             method: "POST",
             // mode: 'no-cors',
             headers: {
@@ -95,8 +107,7 @@ async function signup_request(signup_form){
         })
         // console.log(response.status);
         // console.log(response.headers.get('Content-Type'));
-        const returned_object =  await resposne.json()
-        console.log("yoyoyoyo", returned_object.fullName);
+        const returned_object =  await response.json()
         return returned_object;
     }
     catch(error){

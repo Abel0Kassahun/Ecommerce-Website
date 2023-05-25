@@ -39,6 +39,7 @@ login_form[2].addEventListener('click', e =>{
     let psword_login = login_form[1].value
     // a regular expression for the email
     const email_pattern = /^[a-zA-Z0-9]+@[a-zA-Z]+\.com$/
+    
     // if the email is of a correct pattern
     if(email_pattern.test(email_login)){
         // resetting any style changes that had been made
@@ -61,9 +62,13 @@ login_form[2].addEventListener('click', e =>{
                     error_login.style.color = ' #48c9b0 '
                     login_form[0].style.border = '3px solid #a3e4d7'
                     login_form[1].style.border = '3px solid #a3e4d7'
+                    
                     // redirect after 4 seconds 
-                    // pass the email to the next page 
-
+                    // pass the email and fullname to the next page 
+                    setTimeout(() => {
+                        // Code to be executed after 4 seconds
+                        redirect('../HTML/home-page.html', login_form[0].value, returned.fullName)
+                    }, 4000);
                 }
             }
         })
@@ -88,7 +93,7 @@ async function login_request(email_login, psword_login){
     }
     const url = 'http://localhost:8080/Ecommerce-Website/PHP/login.php'
     try{
-        const resposne = await fetch(url, {
+        const response = await fetch(url, {
             method: "POST",
             // mode: 'no-cors',
             headers: {
@@ -98,8 +103,7 @@ async function login_request(email_login, psword_login){
         })
         // console.log(response.status);
         // console.log(response.headers.get('Content-Type'));
-        const returned_object =  await resposne.json()
-        console.log("yoyoyoyo", returned_object.fullName);
+        const returned_object =  await response.json()
         return returned_object;
     }
     catch(error){

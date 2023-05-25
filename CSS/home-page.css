@@ -108,6 +108,10 @@ body{
     background-color: #d6eaf8;
     box-shadow:  0 5px 10px 1px   #a9cce3    ;
     margin-bottom: 1px;
+
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
 }
 
 .nav-bar-two a{

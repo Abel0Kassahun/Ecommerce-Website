@@ -21,7 +21,7 @@ signup_button.addEventListener('click', (e) => {
 form_welcome_page[1].addEventListener('click', (e) => {
     e.preventDefault()
     // the email input on the signup container
-    form_signup[1].value = form_welcome_page[0].value
+    signup_form[1].value = form_welcome_page[0].value
 
     form_welcome_page[0].value = ''
     
