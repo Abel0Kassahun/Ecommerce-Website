@@ -16,23 +16,28 @@
         shuffle($numbers);
 
         // Take the first 5 numbers from the shuffled array
-        $category_ids = array_slice($numbers, 0, 5);        
+        // $category_ids = array_slice($numbers, 0, 5); 
+        
+        $category_ids = $numbers;
 
-        // Construct the SQL query string with a parameterized query
-        $sql = "SELECT category_name FROM category WHERE category_id IN (" . implode(",", $category_ids) . ")";
-
-        // Execute the query and store the result in $result
-        $result = $connect->query($sql);
         $c_name = array();
-        if ($result->num_rows > 0) {
-            // Loop through each row in the result set and store the pids in an array
-            while ($row = $result->fetch_array()) {
-                $c_name[] = $row[0];
+        for($i = 0; $i < 2; $i++){
+            // Construct the SQL query string with a parameterized query
+            $sql = "SELECT category_name FROM category WHERE category_id = ".$category_ids[$i];
+
+            // Execute the query and store the result in $result
+            $result = $connect->query($sql);
+            if ($result->num_rows > 0) {
+                // Loop through each row in the result set and store the pids in an array
+                while ($row = $result->fetch_array()) {
+                    $c_name[$i] = $row[0];
+                }
+            }
+            else {
+                // echo "No results found.";
             }
         }
-        else {
-            // echo "No results found.";
-        }
+
 
 
         $toFrontEnd = array();
@@ -71,8 +76,8 @@
             } 
 
             $toFrontEnd[$c_name[$i]] = array(
-                'pr_id' => $pr_id,
-                'pr_img' => $pr_img
+                'pr_ids' => $pr_id,
+                'pr_imgs' => $pr_img
             );
         }
         $connect->close();
