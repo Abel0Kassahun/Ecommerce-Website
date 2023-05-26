@@ -44,7 +44,7 @@ search_bar.addEventListener('keydown', (e) =>{
 function href_and_images(a_tags, pr_images, pr_id){
     for(let i = 0; i < 5; i++){
         a_tags[i].setAttribute("href", `../HTML/products.html?pr_id=${pr_id[0]}`);
-        a_tags[i].style.backgroundImage = `url('${pr_images[i]}')`;
+        a_tags[i].style.backgroundImage = `url(${pr_images[i]})`;
         a_tags[i].style.backgroundSize = "cover";
     }
 }
