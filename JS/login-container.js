@@ -67,7 +67,7 @@ login_form[2].addEventListener('click', e =>{
                     // pass the email and fullname to the next page 
                     setTimeout(() => {
                         // Code to be executed after 4 seconds
-                        redirect('../HTML/home-page.html', login_form[0].value, returned.fullName)
+                        redirect('../HTML/home-page.html', returned.uid, returned.fullName)
                     }, 4000);
                 }
             }

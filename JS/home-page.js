@@ -3,10 +3,9 @@ const urlParams = new URLSearchParams(window.location.search);
 
 // get() method of the URLSearchParams object is used to retrieve the value of a 
 // specific query parameter by passing its name as an argument.
-const email = urlParams.get('email');
+const user_id = urlParams.get('uid');
 const fname = urlParams.get('fname');
-console.log(email); 
-console.log(fname); 
+
 
 // getting the search bar 
 let search_bar = document.querySelector('.search input');
@@ -14,6 +13,8 @@ let search_bar = document.querySelector('.search input');
 // getting all the categories
 let category = document.querySelectorAll('.category');
 
+// the a tags on all the small navbars
+let small_navbar_atags = document.querySelectorAll('.nav-bar-two a');
 
 
 window.addEventListener('load', () => {    
@@ -29,7 +30,7 @@ window.addEventListener('load', () => {
             
             // setting the href of all the view all's
             category[i].querySelector(`.c${i+1} .titles a`)
-            .setAttribute("href", `../HTML/search.html?cat=${list_of_categories[i]}`);
+            .setAttribute("href", `../HTML/search.html?cat=${list_of_categories[i]}&uid=${user_id}`);
             console.log(returned[list_of_categories[i]].pr_imgs);
 
             // calling a method that will set the a tags backgroung image and thier hrefs
@@ -37,20 +38,24 @@ window.addEventListener('load', () => {
             returned[list_of_categories[i]].pr_imgs, returned[list_of_categories[i]].pr_ids)
         }
     })
+    for(let i = 0; i < 9; i++){
+        small_navbar_atags[i].setAttribute("href", `../HTML/search.html?cat=${small_navbar_atags[i].textContent}&uid=${user_id}`);
+    }
 });
 
 
 search_bar.addEventListener('keydown', (e) =>{
     if(e.keyCode === 13){
-        window.location.href = `../HTML/search.html?cat=${search_bar.value}`;
+        window.location.href = `../HTML/search.html?searched_pr=${search_bar.value}&uid=${user_id}`;
     }
 });
 
 function href_and_images(a_tags, pr_images, pr_id){
     for(let i = 0; i < 5; i++){
-        a_tags[i].setAttribute("href", `../HTML/products.html?pr_id=${pr_id[0]}`);
+        a_tags[i].setAttribute("href", `../HTML/product.html?pr_id=${pr_id[i]}&uid=${user_id}`);
         a_tags[i].querySelector('img').setAttribute("src", pr_images[i]);
         a_tags[i].style.backgroundSize = "cover";
+        a_tags[i].style.backgroundPosition = "center";
     }
 }
 

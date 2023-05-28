@@ -67,7 +67,7 @@ signup_form[5].addEventListener('click', (e)=>{
                     // pass the email and the fullname to the next page
                     setTimeout(() => {
                         // Code to be executed after 4 seconds
-                        redirect('../HTML/home-page.html', signup_form[1].value, signup_form[0].value)
+                        redirect('../HTML/home-page.html', returned.uid, signup_form[0].value)
                     }, 4000);
                 }
                 else{
@@ -78,12 +78,12 @@ signup_form[5].addEventListener('click', (e)=>{
     }
 })
 
-function redirect(url, email, fname){
+function redirect(url, uid, fname){
     /* If you want to navigate to a new URL without replacing 
     the current page in the browser history,
     you can use the window.location.replace() method instead.
     */
-    window.location.href = `${url}?email=${email}&fname=${fname}` 
+    window.location.href = `${url}?uid=${uid}&fname=${fname}` 
 }
 
 

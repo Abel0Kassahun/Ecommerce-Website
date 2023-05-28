@@ -1,0 +1,287 @@
+*{
+    box-sizing: border-box;
+    /* outline: 2px dotted red; */
+}
+
+@font-face{
+    font-family: 'Roboto-Mono';
+    src:url('../FONT/Roboto-Mono/static/RobotoMono-Regular.ttf');
+}
+
+body{
+    font-family: 'Roboto-Mono';
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 660px;
+    width: 750px;
+    border: 3px solid black;
+    border-radius: 10px;
+    gap: 20px;
+    /* background-color: rgb(199, 240, 238); */
+    box-shadow: 2px 2px 80px rgba(0, 0, 0, 0.3);
+    background-color:  #ebf5fb  ;
+
+}
+nav{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+nav .exit{
+    margin-right: 5px;
+}
+
+nav .exit:hover{
+    opacity: 0.5;
+}
+
+nav img{
+    height: 30px;
+    width: 25px;
+    padding-top: 5px;
+}
+
+.wrapper .product{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 250px;
+    padding-left: 40px;
+}
+
+.p_price{
+    padding-top: 60px;
+}
+
+.product .p_image{
+    margin-right: 30px;
+    height: 250px;
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color:  rgb(178, 178, 204);
+}
+
+.seller{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+
+.seller .note{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: baseline;
+}
+
+.note textarea{
+    width: 350px;
+    border-radius: 10px;
+    background-color:  rgb(229, 229, 239);;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    gap: 10px;
+}
+
+.buttons .dm_seller{
+    height: 30px;
+    width: 110px;
+    /* background-color: chocolate; */
+    background-color: rgb(139, 198, 232);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn button{
+    height: 30px;
+    width: 110px;
+    /* background-color: chocolate; */
+    background-color: rgb(139, 198, 232);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.seller .icons{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    gap: 20px;
+    align-items: center;
+}
+
+.icons img{
+    height: 35px;
+    width: 35px;
+}
+
+.verification{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 500px;
+}
+
+.verified{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.verified img{
+    width: 20px;
+    height: 20px;
+}
+.report{
+    color: black;
+
+}
+
+@media (max-width:450px){
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;   
+    }
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        height: 490px;
+        width: 400px;
+        border: 3px solid black;
+        border-radius: 10px;
+        gap: 10px;
+        background-color: rgb(199, 240, 238);;
+    }
+    nav button{
+        height: 20px;
+        width: 20px;
+        outline: none;
+        border: none;
+        background-color:  rgb(199, 240, 238); 
+    }
+    nav img{
+        height: 15px;
+        width: 15px;
+        padding-left: 2px;        
+        padding-top: 5px;
+    }
+    
+    .wrapper .product{
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        padding-left: 20px;
+    }
+    
+    .product .p_name p{
+        background-color: rgb(139, 198, 232);
+    }
+    
+    .p_price{
+        padding-top: 20px;
+    }
+    
+    .product .p_price p{
+        background-color: rgb(139, 198, 232);
+    }
+    
+    .product .p_image{
+        height: 150px;
+        width: 230px;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color:  rgb(178, 178, 204);;
+    }
+    .seller{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding-left: 10px;
+    }
+
+    .seller > div{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .seller .note{
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+    .note textarea{
+        border-radius: 10px;
+        background-color:  rgb(229, 229, 239);
+        width: 300px;
+    }
+    
+    .btn{
+        padding-top: 10px;
+    }
+    .btn button{
+        height: 30px;
+        width: 110px;
+        background-color: chocolate;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+    }
+    
+    .seller .icons{
+        padding-top: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 70px;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .icons img{
+        height: 25px;
+        width: 25px;
+    }
+    
+    .verification{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 200px;
+    }
+
+    .verified{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .verified img{
+        width: 20px;
+        height: 20px;
+    }
+     .report{
+        color: black;
+    
+     }
+ }

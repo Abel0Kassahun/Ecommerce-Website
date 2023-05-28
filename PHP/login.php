@@ -15,7 +15,7 @@
         $password = $data["psword"];
 
 
-        $stmt = $connect->prepare("CALL login(?, ?, @response, @fullName)");
+        $stmt = $connect->prepare("CALL login(?, ?, @response, @fullName, @uid)");
 
         // Bind input parameters
         $stmt->bind_param("ss", $email, $password);
@@ -24,12 +24,13 @@
         $stmt->execute();
         
         // Retrieve the output parameters
-        $select = $connect->query('select @response, @fullName');
+        $select = $connect->query('select @response, @fullName, @uid');
         $result = $select->fetch_assoc();
 
         $toFrontEnd = array(
             'response' =>  $result["@response"],
-            'fullName' =>  $result["@fullName"]
+            'fullName' =>  $result["@fullName"],
+            'uid' => $result['@uid']
         );
 
         $connect->close();

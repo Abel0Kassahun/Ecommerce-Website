@@ -66,6 +66,8 @@ body{
     font-size: 20px;
     width: 90%;
     height:25px;
+    outline: none;
+    background-color: transparent
 }
 
 .nav-bar-one .sell_btn{

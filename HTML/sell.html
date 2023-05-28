@@ -5,13 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../CSS/search.css">
 </head>
+<link rel="stylesheet" href="../CSS/sell.css">
 <body>
     <div class="wrapper">
-        <div class="tools">    
-            <div class="filter-by-category">
-                <label for="category-dropdown">Select a Category:</label>
+        <nav>
+            <a class="exit"><img src="../ICONS/exit.png" alt="exit?"></a>
+        </nav>
+        <div class="wrapper_body">
+            <div class="input">
+                <div class="name">
+                    <label for="product_name">Product Name</label>
+                    <input type="text" name="product_name">
+                </div>
+                <label for="category-dropdown">Category:</label>
                 <select id="category-dropdown">
                     <option value="--Select an option--">--Select an option--</option>
                     <option value="electronics">Electronics</option>
@@ -32,36 +39,24 @@
                     <option value="furnitures">Furnitures</option>
                     <option value="other">Other</option>
                 </select>
-            </div>
-            <div class="search">
-                <p class="search-error"></p>
-                <form action="" class="searchbar">
-                    <input type="text" name="search" id="search" placeholder="Search">
-                    <button class="search-button">Search</button>
-                </form>
-            </div>
-            <div class="filter-by-price">
-                <label for="min-price">Minimum Price :</label>
-                <input type="number" name="min-price" id="min-price">
-                <label for="max-price">Maximum Price :</label>
-                <input type="number" name="max-price" id="max-price">
-            </div>
-        </div>
-
-        <div class="search-results">
-            <!-- <div class="single-result">
-                <img src="" alt="">
-                <div class="information">
-                    <span>Product Name</span>
-                    <p></p>
-                    <span>Category</span>
-                    <p></p>
-                    <span>Price</span>
-                    <p></p>
+                <div class="price">
+                    <label for="product_price">Price</label>
+                    <input type="number" name="" id="product_price">
                 </div>
-            </div> -->
+                <button class="post">Post</button>
+            </div>
+    
+            <div class="uploading">
+                <div class="img"></div>
+                <input type="file" name="" id="" accept=".jpg,.png">
+
+                <div class="description">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" cols="50" rows="15"></textarea>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="../JS/search.js"></script>
+    <script src="../JS/sell.js"></script>
 </body>
 </html>
