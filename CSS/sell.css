@@ -37,8 +37,12 @@ nav .exit{
 }
 
 nav img{
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
+}
+
+nav img:hover{
+    opacity: 0.5;
 }
 
 .wrapper_body{
@@ -47,6 +51,13 @@ nav img{
     justify-content: center;
     gap: 10px;
 }
+
+#category-dropdown{
+    border-radius: 10px;
+    height: 25px;
+    /* background-color: #ebf5fb; */
+}
+
 
 .input{
     display: flex;
@@ -69,10 +80,12 @@ nav img{
 }
 
 .input button{
-    background-color: chocolate;
-    width: 150px;
+    background-color:  #a9cce3;
+    width: 100px;
     height: 30px;
     border-radius: 8px;
+    box-shadow: 3px -2px 4px rgba(0, 0, 0, 0.2);
+
     /*border: none;
     outline: none;*/
 }

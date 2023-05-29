@@ -10,13 +10,14 @@
 <body>
     <div class="wrapper">
         <nav>
+            <p class="success"></p>
             <a class="exit"><img src="../ICONS/exit.png" alt="exit?"></a>
         </nav>
         <div class="wrapper_body">
             <div class="input">
                 <div class="name">
                     <label for="product_name">Product Name</label>
-                    <input type="text" name="product_name">
+                    <input type="text" name="product_name"  required autocomplete="off">
                 </div>
                 <label for="category-dropdown">Category:</label>
                 <select id="category-dropdown">
@@ -41,7 +42,7 @@
                 </select>
                 <div class="price">
                     <label for="product_price">Price</label>
-                    <input type="number" name="" id="product_price">
+                    <input type="number" name="" id="product_price"  required autocomplete="off">
                 </div>
                 <button class="post">Post</button>
             </div>
@@ -52,7 +53,7 @@
 
                 <div class="description">
                     <label for="description">Description</label>
-                    <textarea name="description" id="description" cols="50" rows="15"></textarea>
+                    <textarea name="description" id="description" cols="50" rows="15"  required autocomplete="off"></textarea>
                 </div>
             </div>
         </div>

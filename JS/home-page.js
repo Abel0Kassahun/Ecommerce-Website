@@ -16,6 +16,9 @@ let category = document.querySelectorAll('.category');
 // the a tags on all the small navbars
 let small_navbar_atags = document.querySelectorAll('.nav-bar-two a');
 
+// the sell btn
+let sell_btn = document.querySelector('.sell_btn');
+
 
 window.addEventListener('load', () => {    
     fyp().then(returned =>{
@@ -49,6 +52,10 @@ search_bar.addEventListener('keydown', (e) =>{
         window.location.href = `../HTML/search.html?searched_pr=${search_bar.value}&uid=${user_id}`;
     }
 });
+
+sell_btn.addEventListener('click', (e) => {
+    window.location.href = `../HTML/sell.html?uid=${user_id}&fname=${fname}`;
+})
 
 function href_and_images(a_tags, pr_images, pr_id){
     for(let i = 0; i < 5; i++){

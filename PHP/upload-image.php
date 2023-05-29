@@ -1,6 +1,14 @@
 <?php
+
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    // header('Content-Type: application/json');
+    // $data = json_decode(file_get_contents("php://input"), true);
     // Check if file was uploaded successfully
     if(isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $category = $_POST['category'];
+        
         $filename = $_FILES['image']['name'];
         $tempFilePath = $_FILES['image']['tmp_name'];
         $fileType = $_FILES['image']['type'];
@@ -14,17 +22,26 @@
         }
 
         // Create folder if it doesn't exist
-        if (!file_exists('uploads')) {
-            mkdir('uploads');
+        if (!file_exists("./product_images/$category")) {
+            mkdir("./product_images/$category");
         }
-
-        // Move file to uploads folder
-        $newFilePath = './product_images/Electronics' . $filename;
-        if(move_uploaded_file($tempFilePath, $newFilePath)) {
-            $response = 'Product Upload Successfully, you will be redirected soon';
-        } 
-        else {
-            $response =  'Error: Failed to upload file.';
+        else{
+            // Check if file already exists
+            if (file_exists("./product_images/$category/$filename")) {
+                $i = 1;
+                while (file_exists("./product_images/$category/" . $i . "_" . $filename)) {
+                    $i++;
+                }
+                $filename = $i . "_" . basename($_FILES['image']['name']);
+            }
+            // Move file to uploads folder
+            $newFilePath = "./product_images/$category/" . $filename;
+            if(move_uploaded_file($tempFilePath, $newFilePath)) {
+                $response = 'Image Uploaded Successfully, you will be redirected soon';
+            } 
+            else {
+                $response = 'Error: Failed to upload file.';
+            }
         }
     } 
     else {

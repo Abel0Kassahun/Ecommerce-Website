@@ -10,31 +10,34 @@
     $data = json_decode(file_get_contents("php://input"), true);
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $email = $data['email'];
-        $sql = "select email from user where email = '$email'";
-        $result = $connect -> query($sql);
-        if($result->num_rows == 1){            
-            $response = 'Email already exists, try signing in';
+            
+        // let sell_data = {
+        //     pr_name: product_name.value,
+        //     pr_price: product_price.value,
+        //     pr_image: `../PHP/product_images/${drp_down}/${data.filename}`,
+        //     posted_by: user_id,
+        //     pr_description: desc.value,
+        //     category: drp_down
+        // }
+        
+        $stmt = $connect->prepare("CALL upload_product(?, ?, ?, ?, ?, ?)");
+        
+        $stmt->bind_param("sisiss", $data['pr_name'], $data['pr_price'], $data['pr_image'],  
+        $data['posted_by'], $data['pr_description'], $data['category']);
+
+        if($stmt->execute()){
+            $response = 1;
         }
         else{
-            
-            $stmt = $connect->prepare("CALL signup(?, ?, ?, ?, @uid)");
-            $stmt->bind_param("ssss", $data['email'], $data['fullName'], $data['phoneNo'], $data['psword']);
-            if($stmt->execute()){
-                $response = 'Signup Successful';
-            }
-            else{
-                $response = 'Error Signing up, try again later';
-            }
-
-            $select = $connect->query('select @uid');
-            $result = $select->fetch_assoc();
+            $response = 'Error Signing up, try again later';
         }
-        $toFrontEnd = array(
-            'response' => $response,
-            'uid' => $result['@uid']
-        );
+
+        $stmt->close();
+        
         $connect->close();
-        echo json_encode($toFrontEnd);
+
+        echo json_encode(array(
+            'response' => $response,
+        ));
     }
 ?>
