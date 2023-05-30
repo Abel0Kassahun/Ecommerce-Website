@@ -81,10 +81,19 @@ body{
     border: none;
 }
 
+.nav-bar-one .account{
+    background-color: transparent;
+    border: none;
+}
+
 .nav-bar-one .account img{
     clip-path: circle();
     height: 30px;
     width: 30px;
+}
+
+.nav-bar-one .account img:hover{
+    opacity: 0.5;
 }
 
 .nav-bar-one a{

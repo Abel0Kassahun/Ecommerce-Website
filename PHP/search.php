@@ -132,8 +132,8 @@
             }
             else if($close){
                 $close_result[$c] = array(
-                    'product_id' => $filtered_results[$i]['product_id'],
                     'product_name' => $filtered_results[$i]['product_name'],
+                    'product_id' => $filtered_results[$i]['product_id'],
                     'product_cat' => $filtered_results[$i]['product_cat'],
                     'product_price' => $filtered_results[$i]['product_price'],
                     'product_image' => $filtered_results[$i]['product_img']

@@ -19,6 +19,9 @@ let small_navbar_atags = document.querySelectorAll('.nav-bar-two a');
 // the sell btn
 let sell_btn = document.querySelector('.sell_btn');
 
+// the account a tag
+let account = document.querySelector('.account');
+
 
 window.addEventListener('load', () => {    
     fyp().then(returned =>{
@@ -54,7 +57,13 @@ search_bar.addEventListener('keydown', (e) =>{
 });
 
 sell_btn.addEventListener('click', (e) => {
-    window.location.href = `../HTML/sell.html?uid=${user_id}&fname=${fname}`;
+    // window.location.href = `../HTML/sell.html?uid=${user_id}&fname=${fname}`;
+    window.location.href = `../HTML/account.html?uid=${user_id}&fname=${fname}`;
+
+})
+
+account.addEventListener('click', (e) => {
+    window.location.href = `../HTML/account.html?uid=${user_id}&fname=${fname}`;
 })
 
 function href_and_images(a_tags, pr_images, pr_id){

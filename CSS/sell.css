@@ -14,7 +14,7 @@ body{
     flex-direction: column;
     height: 660px;
     width: 750px;
-    border: 3px solid black;
+    border: 1px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px 80px rgba(0, 0, 0, 0.3);
     background-color:  #ebf5fb  ;
@@ -54,7 +54,7 @@ nav img:hover{
 
 #category-dropdown{
     border-radius: 10px;
-    height: 25px;
+    height: 30px;
     /* background-color: #ebf5fb; */
 }
 
@@ -75,8 +75,8 @@ nav img:hover{
 .input div input{
     border-radius: 8px;
     background-color:#fff;
-    width: 300px;
-    height: 25px;
+    width: 310px;
+    height: 35px;
 }
 
 .input button{

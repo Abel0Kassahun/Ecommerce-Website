@@ -25,6 +25,7 @@ window.addEventListener('load', (e) => {
                 break;
             }
         }
+
     }
     if(searched_product){
         search_input.value = searched_product;
