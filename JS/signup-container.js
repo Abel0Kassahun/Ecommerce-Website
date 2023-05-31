@@ -26,7 +26,7 @@ alternate_login.addEventListener('click', (e) => {
 
 
 signup_form[5].addEventListener('click', (e)=>{
-    event.preventDefault()
+    e.preventDefault()
     reset_error_effect()
 
     const fullName_pattern = /^[A-Z]{1}[a-z]+[ ]{1}[A-Z]{1}[a-z]+$/;
@@ -55,7 +55,7 @@ signup_form[5].addEventListener('click', (e)=>{
         else if(signup_form[4].value != signup_form[3].value){
             on_failure(signup_form[4], error_signup, 'Password doesn\'t match the previous password input, <br> try again')        
         }
-        else{
+        else{-
             signup_request(signup_form).then(returned =>{
                 if(returned.response === 'Signup Successful'){
                     error_signup.innerHTML = `Welcome ${signup_form[0].value}, you have succesfully signed up, <br> you will be redirected soon`

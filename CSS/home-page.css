@@ -81,6 +81,17 @@ body{
     border: none;
 }
 
+.nav-bar-one .cart_btn{
+    background-color: #abebc6  ;
+    color: black;
+    font-size: 15px;
+    font-weight: bolder;
+    width: 50px;
+    height: 25px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
 .nav-bar-one .account{
     background-color: transparent;
     border: none;

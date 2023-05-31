@@ -24,7 +24,7 @@
         $stmt->execute();
         
         // Retrieve the output parameters
-        $select = $connect->query('select @response, @fullName, @uid');
+        $select = $connect->query('select @response, @fullName, @');
         $result = $select->fetch_assoc();
 
         $toFrontEnd = array(

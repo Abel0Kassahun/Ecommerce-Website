@@ -63,7 +63,7 @@ sell_btn.addEventListener('click', (e) => {
 })
 
 account.addEventListener('click', (e) => {
-    window.location.href = `../HTML/account.html?uid=${user_id}&fname=${fname}`;
+    window.open(`../HTML/account.html?uid=${user_id}&fname=${fname}`, '_blank');
 })
 
 function href_and_images(a_tags, pr_images, pr_id){

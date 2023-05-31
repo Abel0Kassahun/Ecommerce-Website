@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../CSS/home-page.css">
+    <link rel="stylesheet" href="../CSS/cart.css">
+    <link rel="stylesheet" href="../CSS/confirm-checkout.css">
 </head>
 <body>
     <nav class="nav-bar-one">
@@ -20,7 +22,7 @@
         <button class="sell_btn">SELL</button>
 
         <button href="" class="account" ><img src="../ICONS/account.png" title="My Account"></button>
-        <a href="" class="contact_us">Contact us</a>
+        <button class="cart_btn">Cart</button>
         <br>
     </nav>
 
@@ -35,7 +37,39 @@
         <a>Watches</a>
         <a>Shoes</a>
     </nav>
-    
+
+    <section class="cart">
+        <div class="close-cart">
+            <p>Cart</p>
+            <button >
+                <img src="../ICONS/close(1).png" alt="">
+            </button>
+        </div>
+        <div class="cart-of-products">
+            <div class="cart-product">
+                <img src="../PHP/product_images/Electronics/apple_watch.jpg" alt="">
+                <div class="information">
+                    <p>Product Name:</p>
+                    <p class="pr_name">Watch</p>
+                    <p>Price:</p>
+                    <p class="pr_price">121515</p>
+                </div>
+            </div>
+        </div>
+        <div class="checkout">
+            <button class="checkout_btn">Checkout</button>
+        </div>
+    </section>
+
+    <section class="confirm-checkout">
+        <p>This checkout will amount to <span class="checkout-price"></span> ETB</p>
+        <p>Are you sure you want to checkout ?</p>
+        <div>
+            <button class="yes-checkout">Yes</button>
+            <button class="cancel-checkout">Cancel</button>
+        </div>
+    </section>
+
     <section class="wrapper">
         <div class="FYP">
             <div class="slide_pics">
@@ -152,5 +186,6 @@
     </section>
 
     <script src="../JS/home-page.js"></script>
+    <script src="../JS/cart.js"></script>
 </body>
 </html>
