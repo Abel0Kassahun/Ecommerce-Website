@@ -13,8 +13,7 @@
             $user_id = $data['user_id'];
             $total_price = $data['total_price'];
 
-            $sql = "SELECT fullName, phoneNumber, email FROM user 
-            WHERE user-id = ".$user_id;
+            $sql = "SELECT fullName, phoneNumber, email FROM user WHERE `user-id` = ".$user_id;
 
             $result = $connect -> query($sql);
 
@@ -31,11 +30,8 @@
 
             $fullname = explode(" ", $user['fullName']);
             $beforeAT = explode("@", $user['email']);
-            
-            $random = range(0, 40);
-            shuffle($random);
 
-            $tx_ref = $beforeAT + strval($random);
+            $tx_ref = str_shuffle($beforeAT[0]); 
 
             $curl = curl_init();
     
@@ -51,28 +47,33 @@
                 CURLOPT_POSTFIELDS =>'{
                     "amount":'.$total_price.',
                     "currency": "ETB",
-                    "email": '.$user['email'].',
-                    "first_name": '.$fullname[0].',
-                    "last_name": '.$fullname[1].',
-                    "phone_number": '.$user['phoneNumber'].',
-                    "tx_ref": "chewatatest-"'.$tx_ref.',
-                    "callback_url": ""https://www.google.com"",
-                    "return_url": ""https://www.google.com"",
-                    "customization[title]": "",
-                    "customization[description]": ""
-                }',
+                    "email": "'.$user['email'].'",
+                    "first_name": "'.$fullname[0].'",
+                    "last_name": "'.$fullname[1].'",
+                    "phone_number": "'.$user['phoneNumber'].'",
+                    "tx_ref": "chewatatest-'.$tx_ref.'",
+                    "callback_url": "https://webhook.site/077164d6-29cb-40df-ba29-8a00e59a7e60",
+                    "return_url": "https://www.google.com/",
+                    "customization[title]": "Payment for my favourite merchant",
+                    "customization[description]": "I love online payments."
+                    }',
                 CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer CHASECK_TEST-xeI3gf4xifiUuKKk7Ckot5LVcmLsu4q0',
-                'Content-Type: application/json'
-                ),
+                    'Authorization: Bearer CHASECK_TEST-xeI3gf4xifiUuKKk7Ckot5LVcmLsu4q0',
+                    'Content-Type: application/json'
+                )
             ));
             
             $response = curl_exec($curl);
-            $response['tx_ref_custom'] = "chewatatest-".$txt_ref;
 
             curl_close($curl);
 
-            echo json_encode($response); // this might not work as $response might be in a json format itself
+            $decoded_response = json_decode($response, true);
+            $decoded_response['tx_ref_custom'] = "chewatatest-$tx_ref";
+
+
+            echo json_encode($decoded_response);
+
+            // this might not work as $response might be in a json format itself
             // echo $response;
         }
 ?>

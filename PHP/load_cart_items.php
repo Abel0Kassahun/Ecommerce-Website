@@ -26,21 +26,27 @@
                 $sql0 = "SELECT pr_id, pr_name, pr_price, pr_image FROM products INNER JOIN cart
                     ON products.pr_id = cart.product_id WHERE is_deleted = 0 AND cart.user_id = ".$user_id;
                 $result0 = $connect -> query($sql0);
-    
-                if($result0 -> num_rows > 0 AND $result0){
-                    $i = 0;
-                    while ($row = $result->fetch_array()) {
-                        $cart_items[$i] = $row['pr_id'];
-                        $cart_items[$i] = $row['pr_name'];
-                        $cart_items[$i] = $row['pr_price'];
-                        $cart_items[$i] = $row['pr_image'];
-                        
-                        $i++;                
+                
+                $cart_items = array();
+                if($result0 -> num_rows > 0){
+                    if($result0){
+                        $i = 0;
+                        while ($row = $result0 -> fetch_assoc()) {
+                            $cart_items[$i]['pr_id'] = $row['pr_id'];
+                            $cart_items[$i]['pr_name'] = $row['pr_name'];
+                            $cart_items[$i]['pr_price'] = $row['pr_price'];
+                            $cart_items[$i]['pr_image'] = $row['pr_image'];
+                            
+                            $i++;                
+                        }
+                        $response = 'Success';
                     }
-                    $response = 'Success';
+                    else{
+                        $response = 'Error getting items in cart';
+                    }
                 }
                 else{
-                    $response = 'Error getting items in cart';
+                    $response = 'No items in your cart';
                 }
             }
             else{
@@ -53,7 +59,7 @@
 
         echo json_encode(array(
             'total_price' => $total_price,
-            'cart_items' => $cart_items,
+            'products' => $cart_items,
             'response' => $response
         ));
     }

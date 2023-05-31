@@ -97,7 +97,7 @@ nav img{
     gap: 10px;
 }
 
-.buttons .dm_seller{
+.buttons .other_btn{
     height: 30px;
     width: 110px;
     /* background-color: chocolate; */
@@ -152,8 +152,40 @@ nav img{
 }
 .report{
     color: black;
-
 }
+
+.confirm_buy{
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 450px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    justify-content: center;
+    background-color: azure;
+    border: 1px solid;
+    border-radius: 10px;
+    display: none;
+}
+
+.confirm_buy .confirmation{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.confirm_buy .confirmation button{
+    height: 25px;
+    background-color: #aed6f1;
+    border: none;
+    border-radius: 5px;    
+}
+
 
 @media (max-width:450px){
 

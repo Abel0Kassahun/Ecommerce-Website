@@ -17,15 +17,11 @@ var cart_items_exist ;
 
 cart_btn.addEventListener('click', (e) => {
     cart.style.display = 'flex';
-})
+    
+    while (cart_of_products.firstChild) {
+        cart_of_products.removeChild(cart_of_products.firstChild);
+    }
 
-close_cart.addEventListener('click', (e) => {
-    cart.style.display = 'none';
-    confirm_checkout.style.display = 'none';
-
-})
-
-cart_of_products.addEventListener('load', (e) => {
     load_cart_items().then(returned => {
         if(returned.response === 'Success'){
             for(let i = 0; i< returned.products.length; i++){
@@ -40,6 +36,13 @@ cart_of_products.addEventListener('load', (e) => {
         }
     })
 })
+
+close_cart.addEventListener('click', (e) => {
+    cart.style.display = 'none';
+    confirm_checkout.style.display = 'none';
+
+})
+
 
 function add_items(pr_id, pr_name, pr_price, pr_image){
     const cart_product = document.createElement('div');
@@ -140,9 +143,10 @@ yes_checkout.addEventListener('click', (e) => {
     // and store those products in bought items 
 
 
-    // confirm_checkout.style.display = 'none';
+    confirm_checkout.style.display = 'none';
+
     alert('You are about to be redirected to chappa\'s payment page');
-    checkout().then(returned => {
+    checkout_fn().then(returned => {
         if(returned.status === "success"){
             // redirecting the user to the chekcout page of chappa
             window.open(returned.data.checkout_url, '_blank')
@@ -152,13 +156,12 @@ yes_checkout.addEventListener('click', (e) => {
 
             // the code below should have executed in our callback url
             verify_payment(returned.tx_ref_custom).then(returned => {
-                if(returned.status === "success"){
+                if(returned.status === "success"){ // set this to true if you want to bypass payment
                     // clear the cart items 
                     // delete products that have been bought
                     // and store those products in bought items
                     clear_cart().then(returned => {
                         if(returned.response === "Success"){
-                            confirm_checkout.style.display = 'none';
                             cart.style.display = 'none';
                         }
                         else{
@@ -178,7 +181,7 @@ yes_checkout.addEventListener('click', (e) => {
     })
 })
 
-async function checkout(){
+async function checkout_fn(){
     let load = {
         user_id: user_id,
         total_price: total_price
@@ -233,7 +236,8 @@ async function verify_payment(tx_ref){
 
 async function clear_cart(){
     let clr_cart = {
-        user_id: user_id
+        user_id: user_id,
+        from_buy: false
     };
 
     const url = 'http://localhost:8080/Ecommerce-Website/PHP/clear_cart.php'

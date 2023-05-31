@@ -57,9 +57,7 @@ search_bar.addEventListener('keydown', (e) =>{
 });
 
 sell_btn.addEventListener('click', (e) => {
-    // window.location.href = `../HTML/sell.html?uid=${user_id}&fname=${fname}`;
-    window.location.href = `../HTML/account.html?uid=${user_id}&fname=${fname}`;
-
+    window.open(`../HTML/sell.html?uid=${user_id}&fname=${fname}`, '_blank');
 })
 
 account.addEventListener('click', (e) => {

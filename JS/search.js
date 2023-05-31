@@ -160,6 +160,6 @@ function create_element(pr_id, pr_name, pr_price, pr_image, c_name){
     // Append the new div element to the page
     container.appendChild(newResult);
     newResult.addEventListener('click', (e) => {
-        window.location.href = `../HTML/product.html?pr_id=${pr_id}&uid=${user_id}`;
+        window.open(`../HTML/product.html?pr_id=${pr_id}&uid=${user_id}`, '_blank');
     });
 }

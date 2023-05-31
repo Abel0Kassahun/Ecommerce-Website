@@ -30,8 +30,7 @@
     
         curl_close($curl);
 
-        echo json_encode($response); // this might not work as $response might be in a json format itself
-        // echo $response;
+        echo $response; 
     }
 
 

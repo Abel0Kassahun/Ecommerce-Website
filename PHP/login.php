@@ -10,10 +10,8 @@
     $data = json_decode(file_get_contents("php://input"), true);
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    
         $email = $data["email"];
         $password = $data["psword"];
-
 
         $stmt = $connect->prepare("CALL login(?, ?, @response, @fullName, @uid)");
 
@@ -24,7 +22,7 @@
         $stmt->execute();
         
         // Retrieve the output parameters
-        $select = $connect->query('select @response, @fullName, @');
+        $select = $connect->query('select @response, @fullName, @uid');
         $result = $select->fetch_assoc();
 
         $toFrontEnd = array(
