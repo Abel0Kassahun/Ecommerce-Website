@@ -98,7 +98,7 @@
             
 
             echo json_encode(array(
-                'resposne' => $response
+                'response' => $response
             ));
         }
 ?>

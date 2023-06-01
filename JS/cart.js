@@ -12,6 +12,8 @@ let checkout_price = confirm_checkout.querySelector('checkout-price');
 let yes_checkout = confirm_checkout.querySelector('.yes-checkout');
 let cancel_checkout = confirm_checkout.querySelector('.cancel-checkout');
 
+let total_amount = document.querySelector('.checkout-price');
+
 var total_price;
 var cart_items_exist ;
 
@@ -28,6 +30,8 @@ cart_btn.addEventListener('click', (e) => {
                 add_items(returned.products[i].pr_id, returned.products[i].pr_name, returned.products[i].pr_price, returned.products[i].pr_image);
             }
             total_price = returned.total_price;
+            total_amount.innerHTML = returned.total_price;
+
             cart_items_exist = true;
         }
         else{
@@ -117,7 +121,10 @@ async function load_cart_items(){
 checkout.addEventListener('click', (e) => {
     // checkout_price.innerHTML = total_price;
     if(cart_items_exist){
-        confirm_checkout.style.display = 'unset';
+        if(total_price <= 100000){
+            confirm_checkout.style.display = 'unset';
+            alert('The items in your cart exceed the maximum spending amount (100,000) \n try again');
+        }
     }
     else{
         alert('There are no items in your cart');
@@ -156,13 +163,15 @@ yes_checkout.addEventListener('click', (e) => {
 
             // the code below should have executed in our callback url
             verify_payment(returned.tx_ref_custom).then(returned => {
-                if(returned.status === "success"){ // set this to true if you want to bypass payment
+                if(returned.message === "Payment not paid yet"){ // set this to true if you want to bypass payment
                     // clear the cart items 
                     // delete products that have been bought
                     // and store those products in bought items
                     clear_cart().then(returned => {
                         if(returned.response === "Success"){
+                            alert('You have succesfully checkedout');
                             cart.style.display = 'none';
+                            // clear the cart
                         }
                         else{
                             alert(returned.response);
@@ -176,7 +185,7 @@ yes_checkout.addEventListener('click', (e) => {
         }
         else{
             // this alert is not for the user but for debugging purposes
-            alert('Something went wrong initializing payment');
+            alert('Something went wrong initializing payment, try again later');
         }
     })
 })
@@ -200,6 +209,7 @@ async function checkout_fn(){
         // console.log(response.status);
         // console.log(response.headers.get('Content-Type'));
         const returned_object = await response.json()
+        console.log('from checkout',returned_object);
         return returned_object;
     }
     catch(error){

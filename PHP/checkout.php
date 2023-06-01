@@ -65,13 +65,13 @@
             
             $response = curl_exec($curl);
 
-            curl_close($curl);
 
             $decoded_response = json_decode($response, true);
             $decoded_response['tx_ref_custom'] = "chewatatest-$tx_ref";
 
 
             echo json_encode($decoded_response);
+            curl_close($curl);
 
             // this might not work as $response might be in a json format itself
             // echo $response;

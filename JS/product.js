@@ -16,9 +16,15 @@ var total_price;
 
 
 window.addEventListener('load', (e) => {
-    fetch_product(product_id).then(returned =>{
+    fetch_product().then(returned =>{
         fill_product_details(returned.pr_name, returned.pr_price, returned.pr_image, returned.pr_description);
         total_price = returned.pr_price;
+        if(returned.item_in_cart){
+            add_to_cart.innerHTML = "Remove from cart";
+        }
+        else{
+            add_to_cart.innerHTML = "Add to cart";
+        }
     });
 })
 
@@ -32,10 +38,11 @@ function fill_product_details(p_name, p_price, p_image, p_description){
 }
 
 buy.addEventListener('click', (e) => {
-    confirm_buy.style.display = unset;
+    confirm_buy.style.display = "flex";
 })
 
 confirmation[0].addEventListener('click', (e) => {
+    confirm_buy.style.display = "none";
     alert('You are about to be redirected to chappa\'s payment page');
     checkout_fn().then(returned => {
         if(returned.status === "success"){
@@ -47,25 +54,31 @@ confirmation[0].addEventListener('click', (e) => {
 
             // the code below should have executed in our callback url
             verify_payment(returned.tx_ref_custom).then(returned => {
-                if(returned.status === "success"){
+                // set this to true if you want to bypass payment
+                if(returned.message === "Payment not paid yet"){ 
                     // clear the cart items 
                     // delete products that have been bought
                     // and store those products in bought items
                     clear_cart().then(returned => {
                         if(returned.response === "Success"){
-                            confirm_buy.style.display = unset;
+                            alert('You have succesfully bought an item');
+                            confirm_buy.style.display = "none";
+                            // display none all the buttons (buy, add to cart, dm me)
                         }
                         else{
-                            alert(returned.response);
+                            confirm_buy.style.display = "none";
+                            alert('you\'re ',returned.response);
                         }
                     })
                 }
                 else{
+                    confirm_buy.style.display = "none";
                     alert('Please finish the payment if you want to checkout your cart items');
                 }
             })
         }
         else{
+            confirm_buy.style.display = "none";
             // this alert is not for the user but for debugging purposes
             alert('Something went wrong initializing payment');
         }
@@ -73,7 +86,7 @@ confirmation[0].addEventListener('click', (e) => {
 })
 
 confirmation[1].addEventListener('click', (e) => {
-    confirm_buy.style.display = unset;
+    confirm_buy.style.display = "none";
 })
 // let confirm_buy = document.querySelector('.confirm_buy');
 // let confirmation = confirm_buy.querySelector('.confirmation')
@@ -84,16 +97,60 @@ dm_me.addEventListener('click', (e) => {
 })
 
 add_to_cart.addEventListener('click', (e) => {
-    add_to_cart_fn().then(returned => {
-        if(returned.response === "Success"){
-            alert('Item to added to your cart');
-            
-        }
-        else{
-            alert(returned.response);
-        }
-    })
+    if(add_to_cart.innerHTML === "Remove from cart"){
+        // remove from cart
+        remove_item_from_cart().then(returned => {
+            if(returned === "Success"){
+                alert('Item removed from cart');
+                add_to_cart.innerHTML = "Add to cart";
+            }
+            else{
+                alert(returned);
+            }
+        });
+    }
+    else{
+        add_to_cart_fn().then(returned => {
+            if(returned.response === "Success"){
+                alert('Item to added to your cart');  
+                add_to_cart.innerHTML = "Remove from cart"
+                add_to_cart.style.fontSize = "10px";          
+            }
+            else{
+                alert(returned.response);
+            }
+        })
+    }
 })
+
+async function remove_item_from_cart(){
+    let remove_from_cart = {
+        user_id: user_id,
+        product_id: product_id
+    };
+
+    const url = 'http://localhost:8080/Ecommerce-Website/PHP/remove_item_from_cart.php'
+    try{
+        const response = await fetch(url, {
+            method: "POST",
+            // mode: 'no-cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(remove_from_cart)
+        })
+        // console.log(response.status);
+        // console.log(response.headers.get('Content-Type'));
+        const returned_object = await response.json()
+        console.log(returned_object);
+        return returned_object;
+    }
+    catch(error){
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+}
+
 
 async function add_to_cart_fn(){
     let addtocart = {
@@ -205,9 +262,10 @@ async function clear_cart(){
     }
 }
 
-async function fetch_product(pr_id){
+async function fetch_product(){
     let product = {
-        pr_id: pr_id,
+        user_id: user_id,
+        product_id: product_id
     };
 
     const url = 'http://localhost:8080/Ecommerce-Website/PHP/product.php'

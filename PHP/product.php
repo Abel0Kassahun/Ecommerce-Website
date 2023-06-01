@@ -10,8 +10,18 @@
     $data = json_decode(file_get_contents("php://input"), true);
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $pr_id = $data['pr_id'];
-        
+        $user_id = $data['user_id'];
+        $pr_id = $data['product_id'];
+
+        $sql0 = "SELECT * FROM cart WHERE user_id = '$user_id' AND product_id = '$pr_id'";
+        $result0 = $connect -> query($sql0);
+
+        $item_in_cart = false;
+        if($result0 -> num_rows > 0){
+            $item_in_cart = true;
+        }
+
+
         $sql = "select pr_name, pr_price, pr_image, pr_description, pr_posted_by from products where pr_id = '$pr_id'";
         $result = $connect -> query($sql);
         
@@ -21,10 +31,11 @@
                 'pr_price' => $row['pr_price'],
                 'pr_image' => $row['pr_image'],
                 'pr_description' => $row['pr_description'],
-                'pr_posted_by' => $row['pr_posted_by']
+                'pr_posted_by' => $row['pr_posted_by'],
+                'item_in_cart' => $item_in_cart
             );
         }
-        
+
 
 
 
