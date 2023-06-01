@@ -86,7 +86,8 @@ function add_items(pr_id, pr_name, pr_price, pr_image){
     cart_product.addEventListener('click', (e) => {
         // for the time being its window.location
         // but it should be account.style.display = flex
-        window.location.href = `../HTML/product.html?pr_id=${pr_id}&uid=${user_id}`;
+        window.open(`../HTML/product.html?pr_id=${pr_id}&uid=${user_id}`, '_blank');
+        cart.style.display = 'none';
     })
 }
 

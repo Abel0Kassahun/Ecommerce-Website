@@ -18,6 +18,7 @@ let small_navbar_atags = document.querySelectorAll('.nav-bar-two a');
 
 // the sell btn
 let sell_btn = document.querySelector('.sell_btn');
+let sell_container = document.querySelector('.sell-wrapper');
 
 // the account a tag
 let account = document.querySelector('.account');
@@ -31,13 +32,14 @@ window.addEventListener('load', () => {
         console.log(list_of_categories);
 
         for(let i = 0; i < 2; i++){ // should iterate 5 times
+            
             // .c${i+1} is just to be careful, code might be still work without it 
             category[i].querySelector(`.c${i+1} .titles h3`).innerHTML = list_of_categories[i];
             
             // setting the href of all the view all's
-            category[i].querySelector(`.c${i+1} .titles a`)
-            .setAttribute("href", `../HTML/search.html?cat=${list_of_categories[i]}&uid=${user_id}`);
-            console.log(returned[list_of_categories[i]].pr_imgs);
+            category[i].querySelector(`.c${i+1} .titles a`).addEventListener('click', (e) => {
+                window.open(`../HTML/search.html?cat=${list_of_categories[i]}&uid=${user_id}`, '_blank');
+            })
 
             // calling a method that will set the a tags backgroung image and thier hrefs
             href_and_images(category[i].querySelectorAll(`.c${i+1} .category_imgs .cat-slideshow a`),
@@ -52,12 +54,12 @@ window.addEventListener('load', () => {
 
 search_bar.addEventListener('keydown', (e) =>{
     if(e.keyCode === 13){
-        window.location.href = `../HTML/search.html?searched_pr=${search_bar.value}&uid=${user_id}`;
+        window.open(`../HTML/search.html?searched_pr=${search_bar.value}&uid=${user_id}`, '_blank');
     }
 });
 
 sell_btn.addEventListener('click', (e) => {
-    window.open(`../HTML/sell.html?uid=${user_id}&fname=${fname}`, '_blank');
+    sell_container.style.display = "flex";
 })
 
 account.addEventListener('click', (e) => {
@@ -66,7 +68,9 @@ account.addEventListener('click', (e) => {
 
 function href_and_images(a_tags, pr_images, pr_id){
     for(let i = 0; i < 5; i++){
-        a_tags[i].setAttribute("href", `../HTML/product.html?pr_id=${pr_id[i]}&uid=${user_id}`);
+        a_tags[i].addEventListener('click', (e) => {
+            window.open(`../HTML/product.html?pr_id=${pr_id[i]}&uid=${user_id}`, '_blank');
+        })
         a_tags[i].querySelector('img').setAttribute("src", pr_images[i]);
         a_tags[i].style.backgroundSize = "cover";
         a_tags[i].style.backgroundPosition = "center";

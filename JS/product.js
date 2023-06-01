@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 
 const user_id = urlParams.get('uid');
-const product_id = urlParams.get('pr_id');
+const product_id = urlParams.get('pr_id'); 
 
 let pr_detail = document.querySelector('.product');
 let seller = document.querySelector('.seller');
@@ -10,12 +10,17 @@ let dm_me = document.querySelector('.dm_seller');
 let add_to_cart = document.querySelector('.add-to-cart');
 
 let confirm_buy = document.querySelector('.confirm_buy');
-let confirmation = confirm_buy.querySelectorAll('.confirmation button')
+let confirmation = confirm_buy.querySelectorAll('.confirmation button');
+
+let like_btn = document.querySelector('.icons .likes .like');
+let like_count = document.querySelector('.icons .likes .like_count');
 
 var total_price;
+var like_status;
 
 
 window.addEventListener('load', (e) => {
+    console.log('load');
     fetch_product().then(returned =>{
         fill_product_details(returned.pr_name, returned.pr_price, returned.pr_image, returned.pr_description);
         total_price = returned.pr_price;
@@ -26,6 +31,18 @@ window.addEventListener('load', (e) => {
             add_to_cart.innerHTML = "Add to cart";
         }
     });
+    get_like_count().then(returned => {
+        if(returned.like_status){
+            like_btn.querySelector('img').setAttribute('src', '../ICONS/liked_heart.png');
+            like_status = true;
+        }
+        else{
+            like_btn.querySelector('img').setAttribute('src', '../ICONS/unliked_heart.png');
+            like_status = false;
+        }
+        like_count.innerHTML = returned.like_count;
+        console.log('likelieky', like_status); 
+    })
 })
 
 function fill_product_details(p_name, p_price, p_image, p_description){
@@ -62,7 +79,7 @@ confirmation[0].addEventListener('click', (e) => {
                     clear_cart().then(returned => {
                         if(returned.response === "Success"){
                             alert('You have succesfully bought an item');
-                            confirm_buy.style.display = "none";
+                            window.close();
                             // display none all the buttons (buy, add to cart, dm me)
                         }
                         else{
@@ -170,7 +187,7 @@ async function add_to_cart_fn(){
         })
         // console.log(response.status);
         // console.log(response.headers.get('Content-Type'));
-        const returned_object = await response.json()
+        const returned_object = await response.json();
         console.log(returned_object);
         return returned_object;
     }
@@ -289,3 +306,91 @@ async function fetch_product(){
         throw error;
     }
 }
+
+async function get_like_count(){
+    let product = {
+        user_id: user_id,
+        product_id: product_id
+    };
+
+    const url = 'http://localhost:8080/Ecommerce-Website/PHP/get_like_count.php'
+    try{
+        const response = await fetch(url, {
+            method: "POST",
+            // mode: 'no-cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(product)
+        })
+        // console.log(response.status);
+        // console.log(response.headers.get('Content-Type'));
+        const returned_object =  await response.json()
+        console.log('get get get',returned_object);
+        return returned_object;
+    }
+    catch(error){
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+}
+
+async function like_unlike_fn(increment){
+    let product = {
+        user_id: user_id,
+        product_id: product_id,
+        increment: increment
+    };
+
+    const url = 'http://localhost:8080/Ecommerce-Website/PHP/like_unlike.php'
+    try{
+        const response = await fetch(url, {
+            method: "POST",
+            // mode: 'no-cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(product)
+        })
+        // console.log(response.status);
+        // console.log(response.headers.get('Content-Type'));
+        const returned_object =  await response.json()
+        console.log(returned_object);
+        return returned_object;
+    }
+    catch(error){
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+}
+
+like_btn.addEventListener('click', (e) => {
+    // like_unlike = like_btn.querySelector('img');
+    if(like_status){
+        // decrement
+        like_unlike_fn(0).then(returned => {
+            if(returned.response === "Success"){
+                like_btn.querySelector('img').setAttribute('src', '../ICONS/unliked_heart.png');
+                like_status = false;
+                like_count.innerHTML = returned.like_count;
+            }
+            else{
+                alert(returned.response);
+            }
+        })
+    }
+    else{
+        // increment
+        like_unlike_fn(1).then(returned => {
+            if(returned.response === "Success"){
+                like_btn.querySelector('img').setAttribute('src', '../ICONS/liked_heart.png');
+                like_status = true;
+                like_count.innerHTML = returned.like_count; 
+            }
+            else{
+                alert(returned.response);
+            }
+
+        })
+    }
+})

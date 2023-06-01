@@ -3,13 +3,19 @@
     /* outline: 1px dotted red; */
 }
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;   
+@font-face{
+    font-family: 'Roboto-Mono';
+    src:url('../FONT/Roboto-Mono/static/RobotoMono-Regular.ttf');
 }
 
-.wrapper{
+
+.sell-wrapper{
+    font-size: 15px;
+    z-index: 2;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     height: 660px;
@@ -18,9 +24,10 @@ body{
     border-radius: 10px;
     box-shadow: 2px 2px 80px rgba(0, 0, 0, 0.3);
     background-color:  #ebf5fb  ;
+    display: none;
 
 }
-nav{
+.sell-wrapper nav{
     width: 100%;
     height: 40px;
     display: flex;
@@ -29,57 +36,57 @@ nav{
     padding-right: 15px;
 }
 
-nav .exit{
+.sell-wrapper nav .exit{
     height: 20px;
     width: 20px;
     outline: none;
     border: none;
 }
 
-nav img{
+.sell-wrapper nav img{
     height: 25px;
     width: 25px;
 }
 
-nav img:hover{
+.sell-wrapper nav img:hover{
     opacity: 0.5;
 }
 
-.wrapper_body{
+.sell-wrapper .wrapper_body{
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 10px;
 }
 
-#category-dropdown{
+.sell-wrapper .wrapper_body .input #category-dropdown{
     border-radius: 10px;
     height: 30px;
     /* background-color: #ebf5fb; */
 }
 
 
-.input{
+.sell-wrapper .wrapper_body .input{
     display: flex;
     flex-direction: column;
     gap: 50px;
     padding-top: 30px;
 }
 
-.input div{
+.sell-wrapper .wrapper_body .input div{
     display: flex;
     flex-direction: column;
     gap: 5px;
 } 
 
-.input div input{
+.sell-wrapper .wrapper_body .input div input{
     border-radius: 8px;
     background-color:#fff;
     width: 310px;
     height: 35px;
 }
 
-.input button{
+.sell-wrapper .wrapper_body .input button{
     background-color:  #a9cce3;
     width: 100px;
     height: 30px;
@@ -90,7 +97,7 @@ nav img:hover{
     outline: none;*/
 }
 
-.uploading {
+.sell-wrapper .wrapper_body .uploading {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -98,27 +105,27 @@ nav img:hover{
     padding-top: 30px;
 }
 
-.uploading .img{
+.sell-wrapper .wrapper_body .uploading .img{
     background-color: rgb(226, 226, 236);
     border-radius: 8px;
     height: 200px;
     width: 300px;
 }
 
-.uploading button{
+.sell-wrapper .wrapper_body .uploading button{
     width: 100px;
     height: 30px;
     background-color: rgb(121, 117, 225);
     border-radius: 8px;
 }
 
-.description{
+.sell-wrapper .wrapper_body .uploading .description{
     display: flex;
     flex-direction: column;
     padding-left: 10px;
 }
 
-.description textarea{
+.sell-wrapper .wrapper_body .uploading .description textarea{
     background-color: rgb(226, 226, 236);
     border-radius: 8px;
     

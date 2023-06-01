@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="../CSS/home-page.css">
     <link rel="stylesheet" href="../CSS/cart.css">
     <link rel="stylesheet" href="../CSS/confirm-checkout.css">
+    <link rel="stylesheet" href="../CSS/sell.css">
 </head>
 <body>
     <nav class="nav-bar-one">
         <div class="logo">
-            <img src="" alt="">
+            <img src="../ICONS/logo.png" alt="">
             <h1>Mercado</h1>
         </div>
         <div class="search">
@@ -70,10 +71,62 @@
         </div>
     </section>
 
+    // sell page
+    <div class="sell-wrapper">
+        <nav>
+            <p class="success"></p>
+            <a class="exit"><img src="../ICONS/exit.png" alt="exit?"></a>
+        </nav>
+        <div class="wrapper_body">
+            <div class="input">
+                <div class="name">
+                    <label for="product_name">Product Name</label>
+                    <input type="text" name="product_name"  required autocomplete="off">
+                </div>
+                <label for="category-dropdown">Category:</label>
+                <select id="category-dropdown">
+                    <option value="--Select an option--">--Select an option--</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="electronics-accessories">Electronics Accessories</option>
+                    <option value="home-appliances">Home Appliances</option>
+                    <option value="vehicles">Vehicles</option>
+                    <option value="vehicle-accessories">Vehicle Accessories</option>
+                    <option value="toys">Toys</option>
+                    <option value="travel-equipments">Travel Equipments</option>
+                    <option value="jewellries">Jewellries</option>
+                    <option value="watches">Watches</option>
+                    <option value="mens-cloth">Men's Cloth</option>
+                    <option value="females-cloth">Female's Cloth</option>
+                    <option value="cosmetics">Cosmetics</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="apartments">Apartments</option>
+                    <option value="houses">Houses</option>
+                    <option value="furnitures">Furnitures</option>
+                    <option value="other">Other</option>
+                </select>
+                <div class="price">
+                    <label for="product_price">Price</label>
+                    <input type="number" name="" id="product_price"  required autocomplete="off">
+                </div>
+                <button class="post">Post</button>
+            </div>
+    
+            <div class="uploading">
+                <div class="img"></div>
+                <input type="file" name="" id="" accept=".jpg,.png">
+
+                <div class="description">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" cols="50" rows="15"  required autocomplete="off"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section class="wrapper">
         <div class="FYP">
             <div class="slide_pics">
-                <h3>Premium Products</h3>
+                <h3>AD Board</h3>
                 <div class="back_pics">
                     <button class="bu_pre"><</button>
                     <button class="bu_next">></button>
@@ -187,5 +240,6 @@
 
     <script src="../JS/home-page.js"></script>
     <script src="../JS/cart.js"></script>
+    <script src="../JS/sell.js"></script>
 </body>
 </html>

@@ -14,6 +14,7 @@ body{
     height: 100%;
     margin: 0px;
     padding: 0px;
+    background-color: #998da0;
 }
 
 .wrapper{
@@ -27,7 +28,7 @@ body{
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background-color: #ebf5fb;
+    background-color: #fdfffc;
 }
 
 .wrapper nav{
@@ -242,14 +243,14 @@ body{
 }
 
 /* Bought Items */
-.wrapper .content .right-window .Bought-items{
+.Bought-items{
+    height: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 15px;
-    height: 100%;
     overflow-y: auto;
     scrollbar-width: none; 
-    display: none;
+    /* display: none; */
 }
 
 .single-item{

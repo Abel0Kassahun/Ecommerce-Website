@@ -23,7 +23,25 @@
 
         // Create folder if it doesn't exist
         if (!file_exists("./product_images/$category")) {
+            // create folder
             mkdir("./product_images/$category");
+
+            // Check if file already exists
+            if (file_exists("./product_images/$category/$filename")) {
+                $i = 1;
+                while (file_exists("./product_images/$category/" . $i . "_" . $filename)) {
+                    $i++;
+                }
+                $filename = $i . "_" . basename($_FILES['image']['name']);
+            }
+            // Move file to uploads folder
+            $newFilePath = "./product_images/$category/" . $filename;
+            if(move_uploaded_file($tempFilePath, $newFilePath)) {
+                $response = 'Image Uploaded Successfully, you will be redirected soon';
+            } 
+            else {
+                $response = 'Error: Failed to upload file.';
+            }
         }
         else{
             // Check if file already exists

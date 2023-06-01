@@ -38,46 +38,28 @@
             }
         }
 
-
-
         $toFrontEnd = array();
         for($i = 0; $i < 2; $i++){
 
-            // $sql = "SELECT DISTINCT products.pr_id FROM products
-            // INNER JOIN likes ON products.pr_id = likes.pr_id
-            // WHERE products.category_id = 1
-            // AND products.is_deleted = 0
-            // ORDER BY likes.like_count DESC LIMIT 5";
-            
-            $sql = "SELECT DISTINCT products.pr_id FROM products
+            $sql = "SELECT DISTINCT products.pr_id , pr_image FROM products
             INNER JOIN likes ON products.pr_id = likes.pr_id
-            WHERE products.category_id = ".$category_ids[$i]."
-            AND products.is_deleted = 0
+            WHERE products.category_id = '$category_ids[$i]'AND products.is_deleted = 0
             ORDER BY likes.like_count DESC LIMIT 5";
 
             $result = $connect -> query($sql);
-            $pr_id = array();
+            $product = array();
             if($result -> num_rows  > 0){
-                while ($row = $result->fetch_array()) {
-                    $pr_id[] = intval($row[0]);
+                $j = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $product['pr_id'][$j] = intval($row['pr_id']);
+                    $product['pr_image'][$j] = $row['pr_image'];
+                    $j++;
                 }
             }
             
-            $sql = "SELECT pr_image FROM products INNER JOIN likes ON products.pr_id = likes.pr_id
-            WHERE products.pr_id IN (". implode(",", $pr_id).")
-            AND is_deleted = 0 ORDER BY likes.like_count DESC";
-            
-            $result = $connect -> query($sql);
-            $pr_img = array();
-            if($result -> num_rows  > 0){
-                while ($row = $result->fetch_array()) {
-                    $pr_img[] = $row[0];
-                }
-            } 
-
             $toFrontEnd[$c_name[$i]] = array(
-                'pr_ids' => $pr_id,
-                'pr_imgs' => $pr_img
+                'pr_ids' => $product['pr_id'],
+                'pr_imgs' => $product['pr_image']
             );
         }
         $connect->close();

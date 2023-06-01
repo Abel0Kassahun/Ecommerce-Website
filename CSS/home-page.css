@@ -13,6 +13,7 @@ body{
     font-size: 10px;
     margin: 0px;
     padding: 0px;
+    background-color: #fdfffc;
 }
 
 .nav-bar-one{
@@ -63,7 +64,7 @@ body{
 
 .nav-bar-one .search input{
     border: none;
-    font-size: 20px;
+    font-size: 15px;
     width: 90%;
     height:25px;
     outline: none;
@@ -120,7 +121,7 @@ body{
 .nav-bar-two{
     font-size: 12px;
     position: fixed;
-    top: 71px;
+    top: 70px;
     z-index: 1;
     width: 100%;
     padding-left: 135px;
@@ -178,9 +179,11 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color:  #a9cce3 ;
+    background-color:  #fdfffc ;
     width: 80%;
     height: 100%;
+    border: 0.5px solid ;
+    border-radius: 5px;
 }
 
 .wrapper .FYP .slide_pics .back_pics button{
