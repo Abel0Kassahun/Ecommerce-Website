@@ -122,9 +122,11 @@ async function load_cart_items(){
 checkout.addEventListener('click', (e) => {
     // checkout_price.innerHTML = total_price;
     if(cart_items_exist){
-        if(total_price <= 100000){
-            confirm_checkout.style.display = 'unset';
+        if(total_price > 100000){
             alert('The items in your cart exceed the maximum spending amount (100,000) \n try again');
+        }
+        else{
+            confirm_checkout.style.display = 'unset';
         }
     }
     else{

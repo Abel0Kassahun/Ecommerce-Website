@@ -109,9 +109,7 @@ confirmation[1].addEventListener('click', (e) => {
 // let confirmation = confirm_buy.querySelector('.confirmation')
 
 
-dm_me.addEventListener('click', (e) => {
 
-})
 
 add_to_cart.addEventListener('click', (e) => {
     if(add_to_cart.innerHTML === "Remove from cart"){

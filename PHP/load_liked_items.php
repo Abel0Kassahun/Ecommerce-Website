@@ -13,7 +13,7 @@
             $user_id = $data['user_id'];
 
             $sql = "SELECT products.pr_id, pr_name, pr_price, pr_image FROM products INNER JOIN liked_items ON products.pr_id = liked_items.pr_id
-                    WHERE liked_items.user_id = '$user_id'";
+                    WHERE liked_items.user_id = '$user_id' AND is_deleted = 0";
             $result = $connect -> query($sql);
 
             if($result){

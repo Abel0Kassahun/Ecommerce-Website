@@ -14,17 +14,16 @@ body{
     height: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: #998da0;
 }
 
 .wrapper{
     position: relative;
     top: 60px;
-    width: 70vw;
-    height: 70vh;
+    width: 55vw;
+    height: 80vh;
+    border-radius: 15px;
     margin: auto;
     border: 1px solid;
-    border-radius: 15px;
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -54,20 +53,23 @@ body{
 .wrapper .content{
     height: 100%;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between  ;
     /* border: 1px solid; */
     overflow-y: hidden;
 }
 
 .wrapper .content .selection{
-    width: 40%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    row-gap: 19px;
+    justify-content: space-between;
     /* border-right: 1px solid; */
 }
 
 .wrapper .content .selection button{
-    height: 60px;
+    width: 270px;
+    height: 70px;
     border-radius: 15px;
     border: none;
     background-color:   #aed6f1  ;
@@ -79,7 +81,7 @@ body{
 
 .wrapper .right-window{
     height: 100%;
-    width: 60%;
+    width: 100%;
     margin-left: 10px;
     padding-top: 10px;
     scrollbar-width: none; 

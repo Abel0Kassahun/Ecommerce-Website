@@ -19,6 +19,7 @@ body{
 .nav-bar-one{
     position: fixed;
     display: flex;
+    gap: 10px;
     z-index: 1;
     width: 100%;
     align-items: center;
@@ -269,6 +270,7 @@ footer{
     padding-left: 20px;
     padding-right: 20px;
     width: 100%;
+    margin-bottom: 100px;
 }
 
 
@@ -323,4 +325,33 @@ footer .copyright p{
     padding-left:1130px;
 }
 
+
+
+@media(max-width: 1300px){
+    .nav-bar-one{
+        box-shadow:  0 5px 10px 1px   #a9cce3    ;
+
+    }
+    .nav-bar-two{
+        display: none;
+    }
+}
+
+@media(max-width: 860px){
+    .wrapper .FYP .slide_pics{
+        display: none;
+    }
+}
+
+@media(max-width: 650px){
+    .nav-bar-one .logo{
+        width: 20%;
+    }
+    .nav-bar-one .logo h1{
+        display: none;
+    }
+    .nav-bar-one{
+        gap: 10px;
+    }
+}
 

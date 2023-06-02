@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
         const list_of_categories = Object.keys(returned);
         console.log(list_of_categories);
 
-        for(let i = 0; i < 2; i++){ // should iterate 5 times
+        for(let i = 0; i < 5; i++){ // should iterate 5 times
             
             // .c${i+1} is just to be careful, code might be still work without it 
             category[i].querySelector(`.c${i+1} .titles h3`).innerHTML = list_of_categories[i];
